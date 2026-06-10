@@ -1,1 +1,37 @@
+1.
+I have a skeleton template for a 2D text-based graphics editor in C that uses a 2D array char picture[HEIGHT][WIDTH]. Please implement the core drawing functions:
+
+clearPicture() to initialize the canvas with _.
+
+displayPicture() to print the canvas.
+
+setPixel(int x, int y) to plot safely within bounds.
+
+drawLine() using Bresenham's Line Algorithm.
+
+drawCircle() using the Midpoint Circle Algorithm.
+
+drawRectangle() and drawTriangle() by calling drawLine() for their respective edges."
+2.
+"Let's refactor the code slightly to make it cleaner. Rename the global array picture to canvas, rename clearPicture to init_canvas, and rename setPixel to put_pixel. Also, update the function names to snake_case: draw_line, draw_rect, draw_circle, and draw_triangle so they match standard C conventions."
+3.
+"Instead of drawing shapes directly onto the canvas permanently when a user inputs them, I want to store them so we can manipulate them later. Please define a struct shape that can store the type of shape (kind: 1 for Line, 2 for Rect, 3 for Circle, 4 for Triangle) and all necessary coordinate points/radius (ax, ay, bx, by, cx, cy, r). Create a global array struct shape obj[100] and a tracking variable int total = 0 to hold these objects."
+4.
+"Now that we are storing shapes in an array, create a render() function. This function should clear the canvas by calling init_canvas(), loop through all the stored shapes up to total, and call the appropriate drawing function (draw_line, draw_rect, etc.) based on the shape's kind. This way, the canvas is cleanly rebuilt from our object list every time we display it."
+5.
+"Let's completely update the interactive menu in main(). Change the options to:
+
+Add object
+
+Delete object
+
+Modify object
+
+Display picture
+
+List objects
+
+Exit
+
+Implement the add_object() function to take user input, save it into the obj array, and increment total. Also, implement list_objects() to loop through the array and print a readable summary of every active shape along with its index."
 
